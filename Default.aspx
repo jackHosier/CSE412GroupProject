@@ -11,6 +11,6 @@
     <br />
     <asp:TextBox ID="QueryBox" runat="server"></asp:TextBox>
     <br />
-    <asp:Button ID="SearchBtn" runat="server" Text="Search" />
+    <asp:Button ID="SearchBtn" runat="server" Text="Search" OnClick="SearchBtn_Click"/>
 
 </asp:Content>
