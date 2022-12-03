@@ -1,6 +1,6 @@
 import os
 import psycopg2
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect
 
 app = Flask(__name__)
 
@@ -11,32 +11,18 @@ def get_db_connection():
                             password='3023')
     return conn
 
-#this is for getting text from the textbox 
-@app.route('/')
-def my_form():
-    return render_template('index.html')
 
-@app.route('/', methods =['POST'])
-def my_form_post():
-    text = request.form['text']
-    processed_text = text.upper()
-    return processed_text
-
-#for the button 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     conn = get_db_connection()
     cur = conn.cursor()
-
-    query = my_form_post() #return the string in the text box to this str variable here 
-
-    cur.execute(query)
+    cur.execute('SELECT * FROM pokemon;')
     poke = cur.fetchall()
     cur.close()
     conn.close()
     return render_template('index.html', poke=poke)
 
-@app.route('/my-link/')
+@app.route('/my-link/', methods=['GET', 'POST'])
 def my_link():
     conn = get_db_connection()
     cur = conn.cursor()
@@ -46,3 +32,15 @@ def my_link():
     conn.close()
     return render_template('index.html', poke=poke)
 
+@app.route('/pokemon-specific/', methods=['POST'])
+def pokemon_specific():
+    name = request.form['name']
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM pokemon WHERE pokemon.p_name = %s', (name,))
+    poke = cur.fetchone()
+    cur.close()
+    conn.close()
+    if poke is None:
+        return render_template('fail.html', searched=name)
+    return render_template('poke.html', poke=poke)

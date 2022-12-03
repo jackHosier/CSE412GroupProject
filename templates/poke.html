@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Books {% endblock %}</h1>
+        <div class='pok'>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{poke[0]}}.png" alt="text">
+            <h3>#{{ poke[0] }} - {{ poke[1].capitalize() }} BY {{ poke[2] }}</h3>
+            <i><p>({{ poke[3] }} pages)</p></i>
+            <p class='review'>{{ poke[4] }}</p>
+            <i><p>Added {{ poke[5] }}</p></i>
+        </div>
+{% endblock %}

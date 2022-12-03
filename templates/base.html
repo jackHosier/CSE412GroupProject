@@ -26,25 +26,28 @@
 </head>
 <body>
     <nav>
-        <a href="file:///C:/Users/tithb/Documents/CSE412/templates/index.html">CSE 412 Group Project: </a>
-        <a href="#">PokeDex</a> <!--This is the hyperlink to something-->
+        <a href="{{ url_for('index') }}">FlaskApp</a>
+        <a href="#">PokeDex</a>
     </nav>
     <hr>
-    <div class="content">
-        {% block content %} {% endblock %}
-        <h4>This is our group project, a database of all 185 generation 1 pokemon</h4>
-    </div>
-
-    <!--the textbox and get data from it-->
-    <form method="POST" action="/my-link">
-        <input name="text">
-        <input type = "submit" value = "Search" />
+    <form action="/pokemon-specific/" method="POST">
+        <p>
+            <label for="name">Search</label>
+            <input type="text" name="name"
+                   placeholder="Pokemon name">
+            </input>
+        </p>
+        <p>
+            <button type="submit">Submit</button>
+        </p>
     </form>
-
-    <!--The button-->
     <form action="/my-link/">
         <input type="submit" value="Click me" />
     </form>
-    <button> <a href="/my-link/">Click me</a></button>
+    <div class="content">
+        {% block content %} {% endblock %}
+        <h4>This is our group project, a database of Pokemon</h4>
+    </div>
+    
 </body>
 </html>
