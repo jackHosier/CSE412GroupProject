@@ -34,10 +34,17 @@
         {% block content %} {% endblock %}
         <h4>This is our group project, a database of all 185 generation 1 pokemon</h4>
     </div>
+
+    <!--the textbox and get data from it-->
+    <form method="POST" action="/my-link">
+        <input name="text">
+        <input type = "submit" value = "Search" />
+    </form>
+
+    <!--The button-->
     <form action="/my-link/">
         <input type="submit" value="Click me" />
     </form>
-    
     <button> <a href="/my-link/">Click me</a></button>
 </body>
 </html>
