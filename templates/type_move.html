@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Moves {% endblock %}</h1>
+    <div class='pok'>
+        <table class="center">
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Power</th>
+              <th>PP</th>
+              <th>Accuracy</th>
+              <th>Priority</th>
+              <th>Damage</th>
+              <th style="text-align:left">Effect</th>
+            </tr>
+            {% for mov in move %}
+            <tr>
+                <td>{{mov[0].capitalize()}}</td>
+                <td>{{mov[1].capitalize()}}</td>
+                <td>{{mov[2]}}</td>
+                <td>{{mov[3]}}</td>
+                <td>{{mov[4]}}</td>
+                <td>{{mov[5]}}</td>
+                <td>{{mov[6].capitalize()}}</td>
+                <td style="text-align:left">{{mov[7]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

@@ -1,14 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Books {% endblock %}</h1>
-    {% for pok in poke %}
-        <div class='pok'>
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pok[0]}}.png" alt="text">
-            <h3>#{{ pok[0] }} - {{ pok[1] }} BY {{ pok[2] }}</h3>
-            <i><p>({{ pok[3] }} pages)</p></i>
-            <p class='review'>{{ pok[4] }}</p>
-            <i><p>Added {{ pok[5] }}</p></i>
-        </div>
-    {% endfor %}
+    <h1>{% block title %} PokeDex {% endblock %}</h1>
+    <div class='pok'>
+        <table class="center">
+            <tr>
+                <th style="padding:0 100px"><h3>Image</h3></th>
+                <th><h3>Dex#</h3></th>
+                <th><h3>Name</h3></th>
+                <th><h3>Type 1</h3></th>
+                <th><h3>Type 2</h3></th>
+                <th><h3>Height (m)</h3></th>
+                <th><h3>Weight (kg)</h3></th>
+            </tr>
+            {% for pok in poke %}  
+            <tr>
+                <td class="tbl"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pok[3]}}.png" alt="{{pok[0]}}" style="align-self:left;height:200%;width:200%;"></td>
+                <td><h3>{{pok[4]}}</h3></td>
+                <td><h3>{{pok[0].capitalize()}}</h3></td>
+                <td><h3>{{pok[1]}}</h3></td>
+                <td><h3>{{pok[2]}}</h3></td>
+                <td><h3>{{pok[5]}}</h3></td>
+                <td><h3>{{pok[6]}}</h3></td>
+            </tr>
+                {% endfor %}
+        </table>
+    </div>
 {% endblock %}

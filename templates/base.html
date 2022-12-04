@@ -2,21 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>PokeDex</title>
+    <title>{% block title %} {% endblock %}- FlaskApp</title>
     <style>
         nav a {
             color: #d64161;
             font-size: 3em;
-            margin-left: 5px;
+            margin-left: 50px;
             text-decoration: none;
         }
 
         .pok {
+            text-align: center;
             padding: 20px;
             margin: 10px;
             background-color: #f7f4f4;
+            border-spacing: 30px;
         }
-
+        td, th {
+            text-align: center;
+            padding: 0 15px;
+        }
+        .tbl {
+            padding-right: 120px;
+        }
         .review {
                 margin-left: 50px;
                 font-size: 20px;
@@ -24,26 +32,35 @@
 
     </style>
 </head>
-<body>
-    <nav>
-        <a href="file:///C:/Users/tithb/Documents/CSE412/templates/index.html"></a>
-        <a href="#">PokeDex</a> <!--This is the hyperlink to something-->
+<body style="background-color:#f7f4f4">
+    <nav style="text-align:center;">
+        <a href="{{ url_for('index') }}" style="text-align:center;">PokeDex</a>
     </nav>
     <hr>
+    <form action="/pokemon-specific/" method="POST" style="text-align:center;">
+            <label for="name"></label>
+            <input type="text" name="name"
+                   placeholder="Pokemon name">
+            </input>
+            <button type="submit">Submit</button>
+    </form>
+    <form action="/type-move/" method="POST" style="text-align:center;">
+            <label for="type_"></label>
+            <input type="text" name="type_"
+                   placeholder="Move Type">
+            </input>
+            <button type="submit">Submit</button>
+    </form>
+    <form action="/move-list/" style="text-align:center;">
+        <input type="submit" value="Move list" />
+    </form>
+    <form action="/" style="text-align:center;">
+        <input type="submit" value="Pokemon list" />
+    </form>
     <div class="content">
-        <h4>A Pokedex consisting of all pokemon, and their information, up to Generation 8</h4>
+        {% block content %} {% endblock %}
+        <h4>This is our group project, a database of Pokemon</h4>
     </div>
-
-    <!--the textbox and get data from it-->
-    <form method="POST" action="/my-link">
-        <input name="text">
-        <input type = "submit" value = "Search" />
-    </form>
-
-    <!--The button-->
-    <form action="/my-link/">
-        <input type="submit" value="Click me" />
-    </form>
-    <button> <a href="/my-link/">Click me</a></button>
+    
 </body>
 </html>
