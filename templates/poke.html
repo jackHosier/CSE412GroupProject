@@ -1,12 +1,116 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Books {% endblock %}</h1>
-        <div class='pok'>
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{poke[0]}}.png" alt="text">
-            <h3>#{{ poke[0] }} - {{ poke[1].capitalize() }} BY {{ poke[2] }}</h3>
-            <i><p>({{ poke[3] }} pages)</p></i>
-            <p class='review'>{{ poke[4] }}</p>
-            <i><p>Added {{ poke[5] }}</p></i>
-        </div>
+    <h1>{% block title %} PokeDex {% endblock %}</h1>
+    <div class='pok'>
+        <table class="center">
+            <tr>
+                <th style="padding:0 100px"><h3>Image</h3></th>
+                <th><h3>Dex#</h3></th>
+                <th><h3>Name</h3></th>
+                <th><h3>Type 1</h3></th>
+                <th><h3>Type 2</h3></th>
+                <th><h3>Height (m)</h3></th>
+                <th><h3>Weight (kg)</h3></th>
+            </tr>
+            {% for pok in poke %}  
+            <tr>
+                <td class="tbl"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pok[3]}}.png" alt="{{pok[0]}}" style="align-self:left;height:200%;width:200%;"></td>
+                <td><h3>{{pok[4]}}</h3></td>
+                <td><h3>{{pok[0].capitalize()}}</h3></td>
+                <td><h3>{{pok[1].capitalize()}}</h3></td>
+                <td><h3>{{pok[2].capitalize()}}</h3></td>
+                <td><h3>{{pok[5]}}</h3></td>
+                <td><h3>{{pok[6]}}</h3></td>
+            </tr>
+                {% endfor %}
+        </table>
+    </div>
+    <h1>Type Weakness</h1>
+    <div class='pok'>
+        <table class="center">
+            <tr>
+                <th>Pokemon</th>
+                <th>Type</th>
+                <th>Damage Taken</th>
+            </tr>
+            {% for type in damage %}
+            <tr>
+                <td>{{type[0].capitalize()}}</td>
+                <td>{{type[1]}}</td>
+                <td>{{type[2]}}%</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <h1>Moves</h1>
+    <div class='pok'>
+        <table class="center">
+            <tr>
+                <th>Pokemon</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Power</th>
+                <th>PP</th>
+                <th>Accuracy</th>
+                <th>Priority</th>
+                <th>Damage</th>
+                <th style="text-align:left">Effect</th>
+                <th>Learn Method</th>
+                <th>Level</th>
+            </tr>
+            {% for mov in move %}
+            <tr>
+                <td>{{mov[0].capitalize()}}</td>
+                <td>{{mov[1].capitalize()}}</td>
+                <td>{{mov[2].capitalize()}}</td>
+                <td>{{mov[3]}}</td>
+                <td>{{mov[4]}}</td>
+                <td>{{mov[5]}}</td>
+                <td>{{mov[6]}}</td>
+                <td>{{mov[7].capitalize()}}</td>
+                <td style="text-align:left">{{mov[7]}}</td>
+                <td>{{mov[10]}}</td>
+                <td>{{mov[11]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <h1>Evolution</h1>
+    <div class='pok'>
+        <table class="center">
+            <tr>
+                <th style="padding:0 100px">Pre</th>
+                <th style="padding:0 100px">Evo</th>
+                <th>Pokemon</th>
+                <th>Evolution</th>
+                <th>Trigger</th>
+                <th>Level</th>
+                <th>Happiness</th>
+                <th>Gender</th>
+                <th>Held/Use Item</th>
+                <th>Time of Day</th>
+                <th>Known Move</th>
+                <th>Known Move Type</th>
+                <th>Needs Location</th>
+            </tr>
+            {% for mov in evo %}
+            <tr>
+                <td class="tbl"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{mov[0]}}.png" alt="{{mov[0]}}" style="align-self:left;height:200%;width:200%;"></td>
+                <td class="tbl"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{mov[1]}}.png" alt="{{mov[1]}}" style="align-self:left;height:200%;width:200%;"></td>
+                <td>{{mov[2].capitalize()}}</td>
+                <td>{{mov[3].capitalize()}}</td>
+                <td>{{mov[4]}}</td>
+                <td>{{mov[5]}}</td>
+                <td>{{mov[6]}}</td>
+                <td>{{mov[7]}}</td>
+                <td>{{mov[8]}}</td>
+                <td>{{mov[9]}}</td>
+                <td>{{mov[10]}}</td>
+                <td>{{mov[11]}}</td>
+                <td>{{mov[12]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}
