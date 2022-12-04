@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} {% endblock %}- FlaskApp</title>
+    <title>{% block title %} {% endblock %}- CSE 412 Group 29 Project: </title>
     <style>
         nav a {
             color: #d64161;
             font-size: 3em;
             margin-left: 50px;
             text-decoration: none;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
 
         .pok {
@@ -32,26 +33,26 @@
 
     </style>
 </head>
-<body style="background-color:#f7f4f4">
+<body style="background-color:#F5F5DC">
     <nav style="text-align:center;">
-        <a href="{{ url_for('index') }}" style="text-align:center;">PokeDex</a>
+        <a href="{{ url_for('index') }}" style="text-align:center; font-family: Verdana, Geneva, Tahoma, sans-serif;">PokeDex</a>
     </nav>
     <hr>
-    <form action="/pokemon-specific/" method="POST" style="text-align:center;">
+    <form action="/pokemon-specific/" method="POST" style="text-align:center; font-family: Verdana, Geneva, Tahoma, sans-serif;">
             <label for="name"></label>
             <input type="text" name="name"
                    placeholder="Pokemon name">
             </input>
             <button type="submit">Submit</button>
     </form>
-    <form action="/type-move/" method="POST" style="text-align:center;">
+    <form action="/type-move/" method="POST" style="text-align:center; font-family: Verdana, Geneva, Tahoma, sans-serif;">
             <label for="type_"></label>
             <input type="text" name="type_"
                    placeholder="Move Type">
             </input>
             <button type="submit">Submit</button>
     </form>
-    <form action="/move-list/" style="text-align:center;">
+    <form action="/move-list/" style="text-align:center; ">
         <input type="submit" value="Move list" />
     </form>
     <form action="/" style="text-align:center;">
